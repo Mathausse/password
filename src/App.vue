@@ -1,16 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <label>Longueur : </label>
+    <input type="number"/>
+    <div>
+      <button>Générer</button>
+    </div>
+    {{tableauMin.length}}
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data: function(){
+    return{
+      tableauNum:[0,1,2,3,4,5,6,7,8,9],
+      tableauSym:["$","%","^","&","!","@","#",":",";","'",",",".",">","/","*","-",",","|","?","~","_","=","+"],
+      tableauMin:["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+      tableauMaj:["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+    }
+  },
 }
 </script>
 
