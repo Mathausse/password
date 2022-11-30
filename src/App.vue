@@ -1,10 +1,18 @@
 <template>
   <div>
     <label>Longueur : </label>
-    <input type="number"/>
+    <input type="number" v-model="this.taille"/>
+    <label>Majuscules</label>
+    <input type="checkbox" v-model="this.avecMaj"/>
+    <label>Nombres</label>
+    <input type="checkbox" v-model="this.avecNom">
+    <label>Symboles</label>
+    <input type="checkbox" v-model="this.avecSym"/>
+    
     <div>
-      <button>Générer</button>
+      <button v-on:click="generationMotDePasse(this.taille, this.avecMaj, this.avecNom, this.avecSym)">Générer</button>
     </div>
+    {{this.password}}
   </div>
 </template>
 
@@ -18,12 +26,15 @@ export default {
       MAJUSULE_CODE_CHAR: [],
       NOMBRE_CODE_CHAR: [],
       SYMBOlE_CODE_CHAR: [],
+      password: "",
+      avecMaj: false,
+      avecNom: false,
+      avecSym: false,
+      taille: 0,
     }
   },
   mounted() {
     this.remplissageListe();
-    const password = this.generationMotDePasse(15, true, true, true);
-    console.log(password)
   },
   methods:{
     remplissageListe(){
@@ -43,7 +54,7 @@ export default {
         const c = codeChar[Math.floor(Math.random() * codeChar.length)];
         characteresMotDePasse.push(String.fromCharCode(c));
       }
-      return characteresMotDePasse.join('');
+      this.password = characteresMotDePasse.join('');
     }, 
     arrayFromLowToHigh(min, max){
       const liste = []
