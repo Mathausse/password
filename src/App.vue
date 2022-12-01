@@ -37,6 +37,13 @@ export default {
     this.remplissageListe();
   },
   methods:{
+    randomFloat(){
+      const int = window.crypto.getRandomValues(new Uint32Array(1))[0]
+      return int/ 2**32
+    },
+    randomInt(range){
+      return Math.floor(this.randomFloat() * range)
+    },
     remplissageListe(){
       this.MINUSCULE_CODE_CHAR = this.arrayFromLowToHigh(97, 122);
       this.MAJUSULE_CODE_CHAR = this.arrayFromLowToHigh(65,90);
@@ -48,10 +55,10 @@ export default {
       if(majuscule){ codeChar = codeChar.concat(this.MAJUSULE_CODE_CHAR);}
       if(nombre){ codeChar = codeChar.concat(this.NOMBRE_CODE_CHAR);}
       if(symbole){ codeChar = codeChar.concat(this.SYMBOlE_CODE_CHAR);}
-
+      codeChar.sort(function(a,b){return a-b});
       const characteresMotDePasse = [];
       for(let i = 0; i < nbCharactere; i++){
-        const c = codeChar[Math.floor(Math.random() * codeChar.length)];
+        const c = codeChar[this.randomInt(codeChar.length)];
         characteresMotDePasse.push(String.fromCharCode(c));
       }
       this.password = characteresMotDePasse.join('');
