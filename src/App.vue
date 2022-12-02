@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <label>Longueur : </label>
-    <input type="number" v-model="this.taille"/>
-    <label>Majuscules</label>
-    <input type="checkbox" v-model="this.avecMaj"/>
-    <label>Nombres</label>
-    <input type="checkbox" v-model="this.avecNom">
-    <label>Symboles</label>
-    <input type="checkbox" v-model="this.avecSym"/>
-    
-    <div>
+  <div id="container">
+    <h1>It's a password</h1>
+    <div id="passwordContainer">
+      <h3>{{this.password}}</h3>
+    </div>
+    <div id="pannel">
+      <label for="len">Longueur : </label>
+      <input type="number" id="num" min="1" v-model="this.taille"/>
+      <label for="maj">Majuscules</label>
+      <input type="checkbox" id="maj" v-model="this.avecMaj"/>
+      <label for="num">Nombres</label>
+      <input type="checkbox" id="num" v-model="this.avecNom">
+      <label fom="sym">Symboles</label>
+      <input type="checkbox" id="sym" v-model="this.avecSym"/>
+      
       <button v-on:click="generationMotDePasse(this.taille, this.avecMaj, this.avecNom, this.avecSym)">Générer</button>
     </div>
-    {{this.password}}
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data: function(){
@@ -30,7 +32,7 @@ export default {
       avecMaj: false,
       avecNom: false,
       avecSym: false,
-      taille: 0,
+      taille: 1,
     }
   },
   mounted() {
@@ -75,12 +77,70 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: #283969;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1{
+  margin: 0;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+button{
+  grid-column: span 2;
+  background-color: transparent;
+  border: 2px solid white;
+  color: black;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+button:hover{
+  background-color: #FFFFFF33;
+}
+
+#container{
+  background-color: antiquewhite;
+  margin-top: 10vh;
+  padding: 3rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#pannel{
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: auto auto;
+  row-gap: 1rem;
+  column-gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#passwordContainer{
+  background-color: black;
+  color: white;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #333;
+  height: 2rem;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  border-radius: .5rem;
 }
 </style>
