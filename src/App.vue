@@ -1,6 +1,5 @@
 <template lang="pug">
 .container
-  h1 It's a password
   PasswordMonitor( :password='password')
   OptionSelector
 

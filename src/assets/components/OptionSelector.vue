@@ -1,9 +1,10 @@
 <template lang="pug">
 .option-selector-container
-    OptionItem(label='Longueur' type='number')
-    OptionItem(label='Majuscules' type='checkbox')
-    OptionItem(label='Nombres' type='checkbox')
-    OptionItem(label='Symboles' type='checkbox')
+	OptionItem(label='Longueur' type='number' v-model="pwSize")
+	OptionItem(label='Majuscules' type='checkbox' v-model="uppercase")
+	OptionItem(label='Nombres' type='checkbox' v-model="numbers")
+	OptionItem(label='Symboles' type='checkbox' v-model="symbols")
+	Button 
 </template>
 
 <script>
@@ -12,7 +13,9 @@ import OptionItem from './OptionItem.vue';
 
 export default defineComponent({
 	name: 'OptionSelectorView',
-	methods: {},
+	methods: {
+		generatePassword() {},
+	},
 	components: {
 		OptionItem,
 	},
